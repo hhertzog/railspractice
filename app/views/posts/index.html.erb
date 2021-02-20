@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Write a Post', new_post_path, class:"btn btn-outline-success" %>
-<br/><br/>
+<% if user_signed_in? %>
+  <%= link_to 'Write a Post', new_post_path, class:"btn btn-outline-success" %>
+  <br/><br/>
+<% end %>
+
 <h4>All Posts</h4>
 
 <table>
