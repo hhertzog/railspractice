@@ -6,6 +6,5 @@ class User < ApplicationRecord
 
          has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
          has_many :posts
-         has_many :keywords
 
 end
