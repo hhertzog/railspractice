@@ -1,0 +1,8 @@
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    	<%= "#{current_user.notifications.count} Notifications" %>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    	<%= render current_user.notifications.order('created_at DESC') %>
+    </ul>
+  </li>

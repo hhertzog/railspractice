@@ -25,6 +25,13 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        # Send notification to all users with one of the post's words as a keyword
+        User.all.each do |user|
+          create_notification user, "hi", @post
+          
+      end
+
+
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -65,5 +72,13 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :neighborhood, :category, :price, :body, :user_id)
+    end
+
+    def create_notification(recipient, matched_keyword, post)
+      #return if current_user.id == recipient.id
+      Notification.create(recipient_id: recipient.id, 
+                          poster_id: current_user.id, 
+                          matched_keyword: matched_keyword,
+                          post: post)
     end
 end

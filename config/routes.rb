@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   resources :keywords
   devise_for :users
   resources :posts
