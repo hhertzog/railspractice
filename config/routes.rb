@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
+  get 'notifications', to: 'notifications#index'
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   resources :keywords
   devise_for :users
   resources :posts

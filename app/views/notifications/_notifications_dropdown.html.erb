@@ -1,8 +1,17 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	<%= "#{current_user.notifications.count} Notifications" %>
+    	<%= "#{current_user.notifications.where(read_at: nil).count} New Notifications" %>
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    	<%= render current_user.notifications.order('created_at DESC') %>
+    	<li>
+		<%= render current_user.notifications.where(read_at: nil).order('created_at DESC').last(10) %>
+		</li>
+	    <li>
+	    	<hr class="dropdown-divider">
+	    </li>
+	    <li>
+	    	<%= link_to "View All", notifications_path, class:"nav-link" %>
+	    </li>
     </ul>
+
   </li>

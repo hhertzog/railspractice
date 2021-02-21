@@ -1,2 +1,29 @@
-<h1>Notifications#index</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
+<h4>All Posts Matching My Keywords</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Neighborhood</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifications.each do |notification| %>
+      <tr>
+        <td><%= notification.post.title %></td>
+        <td><%= notification.post.neighborhood %></td>
+        <td><%= notification.post.category %></td>
+        <td><%= notification.post.price %></td>
+        <td><%= notification.post.body %></td>
+        <td><%= link_to 'Show', notification.post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
