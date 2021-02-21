@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :word %>
-    <%= form.text_field :word %>
+  <div class="row">
+    <div class="form-group col-lg-2">
+      <%= form.text_field :word, class:"form-control", placeholder:"Keyword" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="field mb-3">
+    <%= form.number_field :user_id, id: :post_user_id, class:"form-control", value:current_user.id, type: :hidden %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-outline-success" %>
   </div>
 <% end %>
